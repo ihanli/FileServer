@@ -15,8 +15,8 @@ class BoundedBuffer
 public:
 	BoundedBuffer(int maxElements) : availableElements(0), freeElements(maxElements) {}
 	~BoundedBuffer(void);
-	void put(tcp::socket element);
-	tcp::socket get(void);
+	void put(tcp::socket* element);
+	tcp::socket* get(void);
 
 private:
 	deque<tcp::socket*> queue;

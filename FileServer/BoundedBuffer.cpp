@@ -4,16 +4,16 @@ BoundedBuffer::~BoundedBuffer(void)
 {
 }
 
-void BoundedBuffer::put(tcp::socket element) {
+void BoundedBuffer::put(tcp::socket* element) {
 	freeElements.wait();
 	{
 		boost::mutex::scoped_lock lock(queueMutex);
-		queue.push_back(&element);
+		queue.push_back(element);
 	}
 	availableElements.post();
 }
 
-tcp::socket BoundedBuffer::get(void) {
+tcp::socket* BoundedBuffer::get(void) {
 	tcp::socket* element;
 
 	availableElements.wait();
@@ -24,5 +24,5 @@ tcp::socket BoundedBuffer::get(void) {
 	}
 	freeElements.post();
 
-	return *element;
+	return element;
 }
