@@ -6,12 +6,8 @@
 class Producer
 {
 public:
-	Producer(BoundedBuffer* connectedSockets) : PORT(80), acceptor(ioService, tcp::endpoint(tcp::v4(), PORT))
-	{
-		this->connectedSockets = connectedSockets;
-		cout << "File server listening on port " << PORT << endl;
-	}
-	~Producer(void);
+	Producer(BoundedBuffer* connectedSockets);
+
 	void run(void);
 
 private:

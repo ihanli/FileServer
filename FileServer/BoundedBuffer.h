@@ -13,8 +13,7 @@ using namespace std;
 class BoundedBuffer
 {
 public:
-	BoundedBuffer(int maxElements) : availableElements(0), freeElements(maxElements) {}
-	~BoundedBuffer(void);
+	BoundedBuffer(int maxElements);
 	void put(tcp::socket* element);
 	tcp::socket* get(void);
 

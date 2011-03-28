@@ -1,23 +1,22 @@
 #ifndef CONSUMER_H_
 #define CONSUMER_H_
 
+#define DOWNLOAD_FILE_PATH "files"
+
 #include "BoundedBuffer.h"
 #include <fstream>
+#include <boost/filesystem.hpp>
 
 using namespace std;
 
 class Consumer
 {
 public:
-	Consumer(BoundedBuffer* connectedSockets) : FILE_PATH("files/") { this->connectedSockets = connectedSockets; }
-	~Consumer(void);
+	Consumer(BoundedBuffer* connectedSockets);
 	void run(void);
 
 private:
 	BoundedBuffer* connectedSockets;
-	ifstream requestedFile;
-	//const int REQUEST_BUFFER_SIZE;
-	const string FILE_PATH;
 };
 
 #endif
