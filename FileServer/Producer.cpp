@@ -11,7 +11,11 @@ void Producer::run(void)
 	while(true)
 	{
 		tcp::socket *socket = new tcp::socket(ioService);
+
+		// accept the connection
 		acceptor.accept(*socket);
+
+		// put the new socket in the BoundedBuffer
 		connectedSockets->put(socket);
 
 		std::cout << "Connection accepted from " << socket->remote_endpoint() << std::endl;

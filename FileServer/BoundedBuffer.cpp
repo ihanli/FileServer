@@ -1,8 +1,6 @@
 #include "BoundedBuffer.h"
 
-BoundedBuffer::BoundedBuffer(unsigned int maxElements) : availableElements(0), freeElements(maxElements)
-{
-}
+BoundedBuffer::BoundedBuffer(unsigned int maxElements) : availableElements(0), freeElements(maxElements) {}
 
 void BoundedBuffer::put(tcp::socket* element)
 {
