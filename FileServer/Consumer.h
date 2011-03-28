@@ -2,12 +2,11 @@
 #define CONSUMER_H_
 
 #define DOWNLOAD_FILE_PATH "files"
+#define REQUESTED_BUFFER_SIZE 1024
 
 #include "BoundedBuffer.h"
 #include <fstream>
 #include <boost/filesystem.hpp>
-
-using namespace std;
 
 class Consumer
 {
