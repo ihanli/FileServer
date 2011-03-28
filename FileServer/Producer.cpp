@@ -1,9 +1,9 @@
 #include "Producer.h"
 
-Producer::Producer(BoundedBuffer* connectedSockets) : PORT(80), acceptor(ioService, tcp::endpoint(tcp::v4(), PORT))
+Producer::Producer(BoundedBuffer* connectedSockets) : acceptor(ioService, tcp::endpoint(tcp::v4(), PORT))
 {
 	this->connectedSockets = connectedSockets;
-	cout << "File server listening on port " << PORT << endl;
+	std::cout << "File server listening on port " << PORT << std::endl;
 }
 
 void Producer::run(void)
@@ -14,6 +14,6 @@ void Producer::run(void)
 		acceptor.accept(*socket);
 		connectedSockets->put(socket);
 
-		cout << "Connection accepted from " << socket->remote_endpoint() << endl;
+		std::cout << "Connection accepted from " << socket->remote_endpoint() << std::endl;
 	}
 }

@@ -1,8 +1,11 @@
 #include "BoundedBuffer.h"
 
-BoundedBuffer::BoundedBuffer(int maxElements) : availableElements(0), freeElements(maxElements) {}
+BoundedBuffer::BoundedBuffer(unsigned int maxElements) : availableElements(0), freeElements(maxElements)
+{
+}
 
-void BoundedBuffer::put(tcp::socket* element) {
+void BoundedBuffer::put(tcp::socket* element)
+{
 	freeElements.wait();
 	{
 		boost::mutex::scoped_lock lock(queueMutex);
@@ -11,7 +14,8 @@ void BoundedBuffer::put(tcp::socket* element) {
 	availableElements.post();
 }
 
-tcp::socket* BoundedBuffer::get(void) {
+tcp::socket* BoundedBuffer::get(void)
+{
 	tcp::socket* element;
 
 	availableElements.wait();

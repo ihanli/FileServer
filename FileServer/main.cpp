@@ -3,15 +3,15 @@
 #include "Producer.h"
 
 int main() {
-	
-	cout << "Initialize bounded buffer for the sockets." << endl;
+	std::cout << "Initialize bounded buffer for the sockets." << std::endl;
 	BoundedBuffer *boundedBuffer = new BoundedBuffer(50);
 
-	cout << "Initialize producer." << endl;
+	std::cout << "Initialize producer." << std::endl;
 	Producer producer(boundedBuffer);
 
-	cout << "Initialize consumers." << endl;
-	for(int i = 0; i < 20; i++)
+	std::cout << "Initialize consumers." << std::endl;
+
+	for(unsigned int i = 0; i < 20; i++)
 	{
 		Consumer consumer(boundedBuffer);
 		boost::thread consumerThread(boost::bind(&Consumer::run, &consumer));
